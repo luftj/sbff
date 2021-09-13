@@ -1,0 +1,18 @@
+<!doctype html>
+<head>
+    <title>SBF Fragen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<form action="answer" method="post">
+    <h3>Frage {{q["nummer"]}} zu {{q["typ"].capitalize()}}</h3>
+    <div>{{q["frage"]}}</div>
+    {% for url in q["urls"] %}
+    <img src="{{'https://www.elwis.de/'+url}}"><img>
+    {% endfor %}
+    <br/>
+    {% for item in q["antworten"] %}
+    <input type="radio" name="antwort" value={{q["antworten"].index(item)}}>{{item}}</button> <br/>
+    {% endfor %}
+    <br/>
+    <input type="submit" name="antwort" value="Abschicken"/>
+</form>
